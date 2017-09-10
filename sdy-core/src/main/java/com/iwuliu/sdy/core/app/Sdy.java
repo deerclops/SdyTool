@@ -10,12 +10,12 @@ import java.util.HashMap;
 
 public final class Sdy {
 
-    public static Configurator init(Context context){
+    public static Configurator init(Context context) {
         getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(), context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    private static HashMap<String,Object> getConfigurations(){
+    public static HashMap<String, Object> getConfigurations() {
         return Configurator.getInstance().getConfigs();
     }
 }
