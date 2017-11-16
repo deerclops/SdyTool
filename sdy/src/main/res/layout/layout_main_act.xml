@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/tv"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="{iconfont icon-chuan}"

@@ -18,7 +18,7 @@ public class MyApp extends Application {
         Sdy.init(getApplicationContext())
                 .addIcon(new FontAwesomeModule())
                 .addIcon(new FontModule())
-                .withApiHost("Your Api Host")
+                .withApiHost("https://github.com")
                 .configure();
     }
 }
