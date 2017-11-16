@@ -18,4 +18,8 @@ public final class Sdy {
     public static HashMap<String, Object> getConfigurations() {
         return Configurator.getInstance().getConfigs();
     }
+
+    public static Context getApplication(){
+        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
+    }
 }

@@ -2,6 +2,7 @@ package com.iwuliu.sdy.core.delegate;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public abstract class BaseDelegate extends SwipeBackFragment {
         }
         if (rootView != null) {
             mUnBinder = ButterKnife.bind(this, rootView);
+            Log.d(this.getClass().getName(), mUnBinder == null ? "yes" : "no");
             onBind(savedInstanceState, rootView);
         }
         return rootView;

@@ -4,6 +4,7 @@ import com.iwuliu.sdy.core.app.ConfigType;
 import com.iwuliu.sdy.core.app.Configurator;
 import com.iwuliu.sdy.core.app.Sdy;
 
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -16,7 +17,15 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RestCreator {
 
-    public RestService getRestService() {
+    public static class ParamsHolder {
+        public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
+    }
+
+    public static WeakHashMap<String, Object> getParams() {
+        return ParamsHolder.PARAMS;
+    }
+
+    public static RestService getRestService() {
         return RestServiceHolder.REST_SERVICE_HOLDER;
     }
 
