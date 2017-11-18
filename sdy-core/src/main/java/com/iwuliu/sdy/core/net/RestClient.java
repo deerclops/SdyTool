@@ -7,6 +7,7 @@ import com.iwuliu.sdy.core.net.callback.IFailure;
 import com.iwuliu.sdy.core.net.callback.IRequest;
 import com.iwuliu.sdy.core.net.callback.ISuccess;
 import com.iwuliu.sdy.core.net.callback.RequestCallbacks;
+import com.iwuliu.sdy.core.net.download.DownloadHandler;
 import com.iwuliu.sdy.core.ui.LoaderStyle;
 import com.iwuliu.sdy.core.ui.SdyLoader;
 
@@ -40,8 +41,16 @@ public class RestClient {
     private final File FILE;
     private final Context CONTEXT;
 
+    // Member params related to file download
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String FILE_NAME;
+
     public RestClient(String url,
                       Map<String, Object> params,
+                      String downloadFDir,
+                      String extension,
+                      String fileName,
                       IRequest request,
                       ISuccess success,
                       IFailure failure,
@@ -60,6 +69,10 @@ public class RestClient {
         this.LOADER_STYLE = loaderStyle;
         this.FILE = file;
         this.CONTEXT = context;
+
+        this.DOWNLOAD_DIR = downloadFDir;
+        this.EXTENSION = extension;
+        this.FILE_NAME = fileName;
     }
 
     public static RestClientBuilder builder() {
@@ -142,4 +155,10 @@ public class RestClient {
             request(HttpMethod.PUT_RAW);
         }
     }
+
+    public final void downLoad(){
+        new DownloadHandler(URL, REQUEST, SUCCESS,FAILURE,ERROR,DOWNLOAD_DIR,EXTENSION,FILE_NAME).handleDownload();
+    }
+
+
 }
